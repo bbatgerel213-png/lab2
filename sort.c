@@ -22,7 +22,16 @@ void insertion_sort(int a[], int n)
 	 * a     нь эрэмбэлэх хүснэгт
 	 * n     нь хүснэгтэд байгаа утгуудын тоо
 	 ***************************************************/
-
+	int i, j, key;
+	for (i = 1; i < n; i++) {
+		key = a[i];
+		j = i - 1;
+		while (j >= 0 && a[j] > key) {
+			a[j + 1] = a[j];
+			j--;
+		}
+		a[j + 1] = key;
+	}
 }
 
 void selection_sort(int a[], int n)
@@ -33,7 +42,17 @@ void selection_sort(int a[], int n)
 	 * a     нь эрэмбэлэх хүснэгт
 	 * n     нь хүснэгтэд байгаа утгуудын тоо
 	 ***************************************************/
-        
+	int i, j, min_idx, temp;
+	for (i = 0; i < n - 1; i++) {
+		min_idx = i;
+		for (j = i + 1; j < n; j++) {
+			if (a[j] < a[min_idx])
+				min_idx = j;
+		}
+		temp = a[i];
+		a[i] = a[min_idx];
+		a[min_idx] = temp;
+	}
 }
 
 void bubble_sort(int a[], int n)
@@ -44,5 +63,14 @@ void bubble_sort(int a[], int n)
 	 * a     нь эрэмбэлэх хүснэгт
 	 * n     нь хүснэгтэд байгаа утгуудын тоо
 	 ***************************************************/
-	
+	int i, j, temp;
+	for (i = 0; i < n - 1; i++) {
+		for (j = 0; j < n - i - 1; j++) {
+			if (a[j] > a[j + 1]) {
+				temp = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = temp;
+			}
+		}
+	}
 }
